@@ -90,7 +90,10 @@ const clearButton = document.getElementById('clear');
         equal.addEventListener('click',() =>{
         if(storage.textContent == 0){ 
             storage.textContent = output.textContent;
-        } else { 
+            output.textContent = 0;
+        }else if(output.textContent == 0) {
+            storage.textContent = output.textContent;
+        }else { 
         functionValue = document.querySelector('#functionValue');
         const func = functionValue.value;
         const a = Number(storage.value);
@@ -98,6 +101,7 @@ const clearButton = document.getElementById('clear');
         output.value = operate(func, a, b);
         functionValue.textContent = 0;
         storage.textContent = 0;
+        functionValue.style = "display: none"
             }
         });
 // adds functionality to the buttons
@@ -110,7 +114,11 @@ functionBtn.forEach(button => {
             functionValue = document.querySelector('#functionValue');            
             functionValue.textContent = button.value;
             storage.value = output.value;
-            output.textContent = 0; 
+            output.textContent = 0;
+            functionValue.style = ''; 
+         }else if (functionValue != 0 && output.textContent == 0){
+            functionValue.textContent = button.value;
+            functionValue.style = '';
         } else if (functionValue != 0){
             functionValue = document.querySelector('#functionValue');
             const func = functionValue.value;
@@ -118,7 +126,8 @@ functionBtn.forEach(button => {
             const b = Number(output.value);
             storage.value = operate(func, a, b);
             functionValue.textContent = button.value;
-            output.textContent = 0; 
+            output.textContent = 0;
+            functionValue.style = ''; 
         }
     })
 })
