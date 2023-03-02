@@ -86,7 +86,7 @@ const clearButton = document.getElementById('clear');
         } 
     });
 
-// just to test the reset buttons
+// gets the result 
     const equal = document.getElementById('=');
         equal.addEventListener('click',() =>{
         if(storage.textContent == 0){ 
@@ -99,7 +99,7 @@ const clearButton = document.getElementById('clear');
         const func = functionValue.value;
         const a = Number(storage.value);
         const b = Number(output.value);
-        output.value = operate(func, a, b);
+        output.value = operate(func, a, b).toFixed(5);
         functionValue.textContent = 0;
         storage.textContent = 0;
         functionValue.style = "display: none"
@@ -111,15 +111,15 @@ let functionValue = document.querySelector('#functionValue');
 
 functionBtn.forEach(button => {
     button.addEventListener('click',() =>{
-         if (storage.value == 0){
+        if (storage.value == 0){
             functionValue = document.querySelector('#functionValue');            
             functionValue.textContent = button.value;
             storage.value = output.value;
             output.textContent = 0;
             functionValue.style = ''; 
-         }else if (functionValue != 0 && output.textContent == 0){
-            functionValue.textContent = button.value;
-            functionValue.style = '';
+        }else if (functionValue != 0 && output.textContent == 0){
+          functionValue.textContent = button.value;
+          functionValue.style = '';
         } else if (functionValue != 0){
             functionValue = document.querySelector('#functionValue');
             const func = functionValue.value;

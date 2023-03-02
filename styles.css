@@ -62,8 +62,7 @@ body{
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    justify-content: ;   
+    gap: 10px; 
 }
 
 .button{
