@@ -19,7 +19,14 @@ function divide(a, b){
 }
 
 function operate(func, a, b){
-    return func(a, b);
+    if( func === '+'){
+        return add(a, b);
+    } else if( func === '-'){
+        return subtract(a, b);
+    } else if( func === '*'){
+        return multiply(a, b);
+    } else if( func === '/')
+        return divide(a, b);
 }
 
 // adds numbers to the display
@@ -83,7 +90,35 @@ const clearButton = document.getElementById('clear');
         equal.addEventListener('click',() =>{
         if(storage.textContent == 0){ 
             storage.textContent = output.textContent;
-        } else {
-            storage.textContent += output.textContent;
-    }
+        } else { 
+        functionValue = document.querySelector('#functionValue');
+        const func = functionValue.value;
+        const a = Number(storage.value);
+        const b = Number(output.value);
+        output.value = operate(func, a, b);
+        functionValue.textContent = 0;
+        storage.textContent = 0;
+            }
+        });
+// adds functionality to the buttons
+const functionBtn = document.querySelectorAll('.functionBtn');
+let functionValue = document.querySelector('#functionValue');
+
+functionBtn.forEach(button => {
+    button.addEventListener('click',() =>{
+         if (storage.value == 0){
+            functionValue = document.querySelector('#functionValue');            
+            functionValue.textContent = button.value;
+            storage.value = output.value;
+            output.textContent = 0; 
+        } else if (functionValue != 0){
+            functionValue = document.querySelector('#functionValue');
+            const func = functionValue.value;
+            const a = Number(storage.value);
+            const b = Number(output.value);
+            storage.value = operate(func, a, b);
+            functionValue.textContent = button.value;
+            output.textContent = 0; 
+        }
     })
+})

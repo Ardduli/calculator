@@ -13,6 +13,7 @@
 
 #outputContainer{
     display: flex;
+    flex-direction: column;
     padding: 10px 20px;
     border: 2px solid black;
     flex: 1;
@@ -33,6 +34,10 @@
     font-size: 1.2em;
 }
 
+#functionValue{
+    align-self: flex-start;
+    color:rgba(126, 252, 0, 0.7);
+}
 #resetButtons{
     display: flex;
     gap: 20px;
