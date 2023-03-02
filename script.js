@@ -68,9 +68,10 @@ const dotButton = document.querySelector('.dot');
 const outputs = document.querySelectorAll('output');
 
 const resetButton = document.getElementById('reset');
-    resetButton.addEventListener('click', () => 
+    resetButton.addEventListener('click', () => {
      outputs.forEach(output => output.textContent = 0)
-    );
+     functionValue.style = "display: none"
+    });
 
 // clears the numbers
 const clearButton = document.getElementById('clear');
